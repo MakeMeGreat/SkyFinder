@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "SkyFinder"
 include(":app")
- 
+include(":data")
+include(":domain")
