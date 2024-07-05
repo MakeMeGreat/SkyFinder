@@ -32,10 +32,6 @@ class DataToDomainMapper @Inject constructor() {
         )
     }
 
-    private fun mapOffersListToDomainModel(offers: List<OfferDto>): List<OfferDomainModel> {
-        return offers.map { offerDto -> mapOfferDtoToDomainModel(offerDto) }
-    }
-
     private fun mapOfferDtoToDomainModel(offerDto: OfferDto) = OfferDomainModel(
         id = offerDto.id,
         title = offerDto.title,

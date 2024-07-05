@@ -6,7 +6,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [RetrofitModule::class]
+    modules = [RepositoryModule::class, RetrofitModule::class]
 )
 interface AppComponent {
     fun inject(mainActivity: MainActivity)
