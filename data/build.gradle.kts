@@ -37,6 +37,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.moshi.kotlin)
     implementation(libs.converter.moshi)
+    implementation("javax.inject:javax.inject:1")
     implementation(project(":domain"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
