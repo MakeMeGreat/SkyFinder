@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SkyFinder</string>
+    <string name="air_tickets">Авиабилеты</string>
+    <string name="hotels">Отели</string>
+    <string name="in_short">Короче</string>
+    <string name="subscriptions">Подписки</string>
+    <string name="profile">Профиль</string>
 </resources>
