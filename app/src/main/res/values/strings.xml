@@ -5,4 +5,9 @@
     <string name="in_short">Короче</string>
     <string name="subscriptions">Подписки</string>
     <string name="profile">Профиль</string>
+    <string name="stub_fragment_text">Экран заглушка</string>
+    <string name="main_title_text">Поиск дешевых\nавиабилетов</string>
+    <string name="from_hint">Откуда - Москва</string>
+    <string name="to_where_hint">Куда - Турция</string>
+    <string name="offer_feed_text">Музыкально отлететь</string>
 </resources>
