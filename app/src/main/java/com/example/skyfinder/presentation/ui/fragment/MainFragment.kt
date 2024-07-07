@@ -1,6 +1,7 @@
 package com.example.skyfinder.presentation.ui.fragment
 
 import android.os.Bundle
+import android.text.InputFilter
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.skyfinder.databinding.FragmentMainBinding
 import com.example.skyfinder.di.App
+import com.example.skyfinder.presentation.ui.CyrillicInputFilter
 import com.example.skyfinder.presentation.ui.MainOfferAdapter
 import com.example.skyfinder.presentation.ui.MainOfferItemDecorator
 import com.example.skyfinder.presentation.ui.viewmodel.MainFragmentViewModel
@@ -37,7 +39,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainFragmentViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory)[MainFragmentViewModel::class.java]
         val adapter = MainOfferAdapter()
         binding.offerFeedRecyclerView.adapter = adapter
         binding.offerFeedRecyclerView.addItemDecoration(
@@ -62,6 +64,7 @@ class MainFragment : Fragment() {
                 }
             }
         }
+        binding.fromEditText.filters = arrayOf(InputFilter.LengthFilter(20), CyrillicInputFilter())
     }
 
     override fun onDestroyView() {
