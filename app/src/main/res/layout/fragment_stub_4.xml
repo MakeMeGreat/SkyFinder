@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black"
-    tools:context=".presentation.ui.stub.Stub4Fragment">
+    tools:context=".presentation.ui.fragment.stub.Stub4Fragment">
 
     <TextView
         android:layout_width="wrap_content"
