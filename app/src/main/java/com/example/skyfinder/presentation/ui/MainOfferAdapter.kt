@@ -10,7 +10,8 @@ import com.example.skyfinder.databinding.MainOfferItemBinding
 import com.example.skyfinder.presentation.model.offer.OfferModel
 import java.util.Locale
 
-class MainOfferAdapter: ListAdapter<OfferModel, MainOfferAdapter.MainOfferViewHolder>(DiffCallback) {
+class MainOfferAdapter :
+    ListAdapter<OfferModel, MainOfferAdapter.MainOfferViewHolder>(DiffCallback) {
 
     class MainOfferViewHolder(val binding: MainOfferItemBinding) : ViewHolder(binding.root) {
         fun bind(offerModel: OfferModel) {
@@ -52,6 +53,7 @@ class MainOfferAdapter: ListAdapter<OfferModel, MainOfferAdapter.MainOfferViewHo
         override fun areItemsTheSame(oldItem: OfferModel, newItem: OfferModel): Boolean {
             return oldItem.id == newItem.id
         }
+
         override fun areContentsTheSame(
             oldItem: OfferModel,
             newItem: OfferModel

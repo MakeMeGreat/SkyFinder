@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/main_fragment"
+    <item
+        android:id="@+id/main_fragment"
         android:title="@string/air_tickets"
-        android:icon="@drawable/air_tickets_icon"/>
-    <item android:id="@+id/stub_1_fragment"
+        android:icon="@drawable/air_tickets_icon" />
+    <item
+        android:id="@+id/stub_1_fragment"
         android:title="@string/hotels"
-        android:icon="@drawable/hotels_icon"/>
-    <item android:id="@+id/stub_2_fragment"
+        android:icon="@drawable/hotels_icon" />
+    <item
+        android:id="@+id/stub_2_fragment"
         android:title="@string/in_short"
-        android:icon="@drawable/short_icon"/>
-    <item android:id="@+id/stub_3_fragment"
+        android:icon="@drawable/short_icon" />
+    <item
+        android:id="@+id/stub_3_fragment"
         android:title="@string/subscriptions"
-        android:icon="@drawable/subscriptions_icon"/>
-    <item android:id="@+id/stub_4_fragment"
+        android:icon="@drawable/subscriptions_icon" />
+    <item
+        android:id="@+id/stub_4_fragment"
         android:title="@string/profile"
-        android:icon="@drawable/profile_icon"/>
+        android:icon="@drawable/profile_icon" />
 
 </menu>

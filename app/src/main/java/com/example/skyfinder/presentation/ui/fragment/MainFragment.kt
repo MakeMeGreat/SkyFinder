@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +18,9 @@ import com.example.skyfinder.presentation.ui.CyrillicInputFilter
 import com.example.skyfinder.presentation.ui.MainOfferAdapter
 import com.example.skyfinder.presentation.ui.MainOfferItemDecorator
 import com.example.skyfinder.presentation.ui.viewmodel.MainFragmentViewModel
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -64,7 +68,28 @@ class MainFragment : Fragment() {
                 }
             }
         }
-        binding.fromEditText.filters = arrayOf(InputFilter.LengthFilter(20), CyrillicInputFilter())
+        setupEditTexts()
+    }
+
+    private fun setupEditTexts() {
+        var job: Job? = null
+        binding.toWhereEditText.filters =
+            arrayOf(InputFilter.LengthFilter(23), CyrillicInputFilter())
+        binding.fromEditText.apply {
+            filters = arrayOf(InputFilter.LengthFilter(23), CyrillicInputFilter())
+            setText(viewModel.getTextFromSharedPrefs())
+            addTextChangedListener { editable ->
+                job?.cancel()
+                job = MainScope().launch {
+                    delay(2000)
+                    editable?.let {
+                        if (editable.toString().isNotEmpty()) {
+                            viewModel.saveTextToSharedPrefs(editable.toString())
+                        }
+                    }
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {

@@ -60,38 +60,42 @@ class DomainToPresentationMapper @Inject constructor() {
         )
     }
 
-    private fun mapTicketDomainToPresentationModel(ticketDomainModel: TicketDomainModel) = TicketModel(
-        id = ticketDomainModel.id,
-        badge = ticketDomainModel.badge,
-        price = mapPriceDomainToPresentationModel(ticketDomainModel.price),
-        providerName = ticketDomainModel.providerName,
-        company = ticketDomainModel.company,
-        departure = mapDepartureDomainToPresentationModel(ticketDomainModel.departure),
-        arrival = mapArrivalDomainToPresentationModel(ticketDomainModel.arrival),
-        hasTransfer = ticketDomainModel.hasTransfer,
-        hasVisaTransfer = ticketDomainModel.hasVisaTransfer,
-        luggage = mapLuggageDomainToPresentationModel(ticketDomainModel.luggage),
-        handLuggage = mapHandLuggageDomainToPresentationModel(ticketDomainModel.handLuggage),
-        isReturnable = ticketDomainModel.isReturnable,
-        isExchangeable = ticketDomainModel.isExchangeable,
-    )
+    private fun mapTicketDomainToPresentationModel(ticketDomainModel: TicketDomainModel) =
+        TicketModel(
+            id = ticketDomainModel.id,
+            badge = ticketDomainModel.badge,
+            price = mapPriceDomainToPresentationModel(ticketDomainModel.price),
+            providerName = ticketDomainModel.providerName,
+            company = ticketDomainModel.company,
+            departure = mapDepartureDomainToPresentationModel(ticketDomainModel.departure),
+            arrival = mapArrivalDomainToPresentationModel(ticketDomainModel.arrival),
+            hasTransfer = ticketDomainModel.hasTransfer,
+            hasVisaTransfer = ticketDomainModel.hasVisaTransfer,
+            luggage = mapLuggageDomainToPresentationModel(ticketDomainModel.luggage),
+            handLuggage = mapHandLuggageDomainToPresentationModel(ticketDomainModel.handLuggage),
+            isReturnable = ticketDomainModel.isReturnable,
+            isExchangeable = ticketDomainModel.isExchangeable,
+        )
 
-    private fun mapDepartureDomainToPresentationModel(departureDomainModel: DepartureDomainModel) = DepartureModel(
-        town = departureDomainModel.town,
-        date = departureDomainModel.date,
-        airport = departureDomainModel.airport,
-    )
+    private fun mapDepartureDomainToPresentationModel(departureDomainModel: DepartureDomainModel) =
+        DepartureModel(
+            town = departureDomainModel.town,
+            date = departureDomainModel.date,
+            airport = departureDomainModel.airport,
+        )
 
-    private fun mapArrivalDomainToPresentationModel(arrivalDomainModel: ArrivalDomainModel) = ArrivalModel(
-        town = arrivalDomainModel.town,
-        date = arrivalDomainModel.date,
-        airport = arrivalDomainModel.airport,
-    )
+    private fun mapArrivalDomainToPresentationModel(arrivalDomainModel: ArrivalDomainModel) =
+        ArrivalModel(
+            town = arrivalDomainModel.town,
+            date = arrivalDomainModel.date,
+            airport = arrivalDomainModel.airport,
+        )
 
-    private fun mapLuggageDomainToPresentationModel(luggageDomainModel: LuggageDomainModel) = LuggageModel(
-        hasLuggage = luggageDomainModel.hasLuggage,
-        price = luggageDomainModel.price?.let { mapPriceDomainToPresentationModel(it) }
-    )
+    private fun mapLuggageDomainToPresentationModel(luggageDomainModel: LuggageDomainModel) =
+        LuggageModel(
+            hasLuggage = luggageDomainModel.hasLuggage,
+            price = luggageDomainModel.price?.let { mapPriceDomainToPresentationModel(it) }
+        )
 
     private fun mapHandLuggageDomainToPresentationModel(handLuggageDomainModel: HandLuggageDomainModel) =
         HandLuggageModel(

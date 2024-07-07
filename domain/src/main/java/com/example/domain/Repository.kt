@@ -11,4 +11,8 @@ interface Repository {
     suspend fun getTickets(): TicketResponseDomainModel
 
     suspend fun getTicketsOffers(): TicketOfferResponseDomainModel
+
+    fun saveTextToSharedPrefs(text: String)
+
+    fun getTextFromSharedPrefs(): String
 }

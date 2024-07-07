@@ -1,6 +1,7 @@
 package com.example.skyfinder.presentation.ui
-import android.text.Spanned
+
 import android.text.InputFilter
+import android.text.Spanned
 
 class CyrillicInputFilter : InputFilter {
     override fun filter(

@@ -28,7 +28,7 @@ class RetrofitModule {
     @Singleton
     @Provides
     @Named("FIRST_API")
-    fun provideFirstRetrofitService(moshi: Moshi): Retrofit{
+    fun provideFirstRetrofitService(moshi: Moshi): Retrofit {
         return Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .baseUrl(FIRST_API)
