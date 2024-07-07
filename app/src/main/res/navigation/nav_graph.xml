@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/main_fragment">
+    <fragment
+        android:id="@+id/main_fragment"
+        android:name="com.example.skyfinder.presentation.ui.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/stub_1_fragment"
+        android:name="com.example.skyfinder.presentation.ui.stub.Stub1Fragment"
+        android:label="fragment_stub"
+        tools:layout="@layout/fragment_stub_1" />
+    <fragment
+        android:id="@+id/stub_2_fragment"
+        android:name="com.example.skyfinder.presentation.ui.stub.Stub2Fragment"
+        android:label="fragment_stub_2"
+        tools:layout="@layout/fragment_stub_2" />
+    <fragment
+        android:id="@+id/stub_3_fragment"
+        android:name="com.example.skyfinder.presentation.ui.stub.Stub3Fragment"
+        android:label="fragment_stub_3"
+        tools:layout="@layout/fragment_stub_3" />
+    <fragment
+        android:id="@+id/stub_4_fragment"
+        android:name="com.example.skyfinder.presentation.ui.stub.Stub4Fragment"
+        android:label="fragment_stub_4"
+        tools:layout="@layout/fragment_stub_4" />
+</navigation>

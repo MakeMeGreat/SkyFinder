@@ -48,12 +48,15 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(project(":data"))
     implementation(project(":domain"))
-
-    implementation("com.google.dagger:dagger:2.51.1")
-    kapt("com.google.dagger:dagger-compiler:2.51.1")
-
-    implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
-    implementation("com.squareup.retrofit2:converter-moshi:2.11.0")
+    //dagger
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
+    //Retrofit with Moshi
+    implementation(libs.moshi.kotlin)
+    implementation(libs.converter.moshi)
+    //Navigation component
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
