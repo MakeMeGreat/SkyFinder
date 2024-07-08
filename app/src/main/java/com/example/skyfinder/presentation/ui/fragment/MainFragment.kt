@@ -15,6 +15,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.example.skyfinder.databinding.FragmentMainBinding
 import com.example.skyfinder.di.App
 import com.example.skyfinder.presentation.ui.CyrillicInputFilter
+import com.example.skyfinder.presentation.ui.MainActivity
 import com.example.skyfinder.presentation.ui.MainOfferAdapter
 import com.example.skyfinder.presentation.ui.MainOfferItemDecorator
 import com.example.skyfinder.presentation.ui.viewmodel.MainFragmentViewModel
@@ -32,12 +33,14 @@ class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         App.appComponent.inject(this)
         _binding = FragmentMainBinding.inflate(inflater)
+
         return binding.root
     }
 
@@ -68,13 +71,21 @@ class MainFragment : Fragment() {
                 }
             }
         }
+
         setupEditTexts()
+//        val fm = (activity as MainActivity).supportFragmentManager
+////        binding.toWhereEditText.setOnFocusChangeListener { _, hasFocus ->
+////            if (hasFocus)
+////            SearchBottomSheetFragment().show(fm, "my bottom sheet dialog")
+////        }
+//        binding.toWhereEditText.setOnClickListener {
+//            binding.fromEditText.clearFocus()
+//            SearchBottomSheetFragment().show(fm, "my bottom sheet dialog")
+//        }
     }
 
     private fun setupEditTexts() {
         var job: Job? = null
-        binding.toWhereEditText.filters =
-            arrayOf(InputFilter.LengthFilter(23), CyrillicInputFilter())
         binding.fromEditText.apply {
             filters = arrayOf(InputFilter.LengthFilter(23), CyrillicInputFilter())
             setText(viewModel.getTextFromSharedPrefs())
@@ -83,11 +94,19 @@ class MainFragment : Fragment() {
                 job = MainScope().launch {
                     delay(2000)
                     editable?.let {
-                        if (editable.toString().isNotEmpty()) {
-                            viewModel.saveTextToSharedPrefs(editable.toString())
-                        }
+                        viewModel.saveTextToSharedPrefs(editable.toString())
+//                        if (editable.toString().isNotEmpty()) {
+//                        }
                     }
                 }
+            }
+        }
+        val supportFragmentManager = (activity as MainActivity).supportFragmentManager
+        binding.toWhereEditText.apply {
+            filters = arrayOf(InputFilter.LengthFilter(23), CyrillicInputFilter())
+            setOnClickListener {
+                binding.fromEditText.clearFocus()
+                SearchBottomSheetFragment().show(supportFragmentManager, "bottom sheet dialog")
             }
         }
     }
