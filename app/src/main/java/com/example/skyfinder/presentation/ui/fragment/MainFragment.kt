@@ -16,8 +16,8 @@ import com.example.skyfinder.databinding.FragmentMainBinding
 import com.example.skyfinder.di.App
 import com.example.skyfinder.presentation.ui.CyrillicInputFilter
 import com.example.skyfinder.presentation.ui.MainActivity
-import com.example.skyfinder.presentation.ui.MainOfferAdapter
-import com.example.skyfinder.presentation.ui.MainOfferItemDecorator
+import com.example.skyfinder.presentation.ui.adapter.MainOfferAdapter
+import com.example.skyfinder.presentation.ui.adapter.MainOfferItemDecorator
 import com.example.skyfinder.presentation.ui.viewmodel.MainFragmentViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope

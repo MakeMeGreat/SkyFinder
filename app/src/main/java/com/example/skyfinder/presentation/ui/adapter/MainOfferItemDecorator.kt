@@ -1,4 +1,4 @@
-package com.example.skyfinder.presentation.ui
+package com.example.skyfinder.presentation.ui.adapter
 
 import android.graphics.Rect
 import android.view.View

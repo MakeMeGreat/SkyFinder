@@ -10,4 +10,8 @@
     <string name="from_hint">Откуда - Москва</string>
     <string name="to_where_hint">Куда - Турция</string>
     <string name="offer_feed_text">Музыкально отлететь</string>
+    <string name="difficult_route_text">Сложный\nмаршрут</string>
+    <string name="anywhere_text">Куда угодно</string>
+    <string name="weekends_text">Выходные</string>
+    <string name="hot_tickets_text">Горячие\nбилеты</string>
 </resources>

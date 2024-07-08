@@ -1,4 +1,4 @@
-package com.example.skyfinder.presentation.ui
+package com.example.skyfinder.presentation.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
