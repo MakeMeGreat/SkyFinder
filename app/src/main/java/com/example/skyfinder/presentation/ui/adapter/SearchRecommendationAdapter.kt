@@ -9,7 +9,9 @@ import com.example.skyfinder.R
 import com.example.skyfinder.databinding.SearchRecommendationItemBinding
 import com.example.skyfinder.presentation.model.SearchRecommendationItem
 
-class SearchRecommendationAdapter :
+class SearchRecommendationAdapter(
+    private val onRecommendationItemClicked: (SearchRecommendationItem) -> Unit
+) :
     ListAdapter<SearchRecommendationItem, SearchRecommendationAdapter.SearchRecommendationViewHolder>(
         SearchDiffCallback
     ) {
@@ -45,6 +47,9 @@ class SearchRecommendationAdapter :
 
     override fun onBindViewHolder(holder: SearchRecommendationViewHolder, position: Int) {
         val item = getItem(position)
+        holder.itemView.setOnClickListener {
+            onRecommendationItemClicked(item)
+        }
         holder.bind(item)
     }
 

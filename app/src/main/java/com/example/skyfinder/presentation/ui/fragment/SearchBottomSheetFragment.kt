@@ -11,6 +11,8 @@ import com.example.skyfinder.presentation.model.SearchRecommendationItem
 import com.example.skyfinder.presentation.ui.adapter.SearchRecommendationAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
+private const val CITY_KEY = "CITY_KEY"
+
 class SearchBottomSheetFragment : BottomSheetDialogFragment() {
 
     private var _binding: SearchBottomSheetFragmentBinding? = null
@@ -36,8 +38,34 @@ class SearchBottomSheetFragment : BottomSheetDialogFragment() {
         binding.difficultRouteButton.setOnClickListener {
             Toast.makeText(context, "click", LENGTH_SHORT).show()
         }
-        val adapter = SearchRecommendationAdapter()
+        val adapter = SearchRecommendationAdapter { item ->
+            binding.searchToWhereEditText.setText(item.city)
+        }
         binding.searchRecommendationRecyclerView.adapter = adapter
         adapter.submitList(recommendationItemList)
+        val fromCityName = requireArguments().getString(CITY_KEY)
+        binding.searchFromEditText.setText(fromCityName)
+        setupClearButton()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun setupClearButton() {
+        binding.clearImageButton.setOnClickListener {
+            binding.searchToWhereEditText.text.clear()
+        }
+    }
+
+    companion object {
+        fun newInstance(fromCityName: String): SearchBottomSheetFragment {
+            return SearchBottomSheetFragment().apply {
+                arguments = Bundle().also {
+                    it.putString(CITY_KEY, fromCityName)
+                }
+            }
+        }
     }
 }

@@ -106,7 +106,8 @@ class MainFragment : Fragment() {
             filters = arrayOf(InputFilter.LengthFilter(23), CyrillicInputFilter())
             setOnClickListener {
                 binding.fromEditText.clearFocus()
-                SearchBottomSheetFragment().show(supportFragmentManager, "bottom sheet dialog")
+                SearchBottomSheetFragment.newInstance(binding.fromEditText.text.toString())
+                    .show(supportFragmentManager, "bottom sheet dialog")
             }
         }
     }
