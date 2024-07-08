@@ -40,7 +40,6 @@ class MainFragment : Fragment() {
     ): View {
         App.appComponent.inject(this)
         _binding = FragmentMainBinding.inflate(inflater)
-
         return binding.root
     }
 

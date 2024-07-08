@@ -8,7 +8,11 @@
         android:id="@+id/main_fragment"
         android:name="com.example.skyfinder.presentation.ui.fragment.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_main_fragment_to_stub5Fragment"
+            app:destination="@id/stub5Fragment" />
+    </fragment>
     <fragment
         android:id="@+id/stub_1_fragment"
         android:name="com.example.skyfinder.presentation.ui.fragment.stub.Stub1Fragment"
@@ -29,4 +33,12 @@
         android:name="com.example.skyfinder.presentation.ui.fragment.stub.Stub4Fragment"
         android:label="fragment_stub_4"
         tools:layout="@layout/fragment_stub_4" />
+    <dialog
+        android:id="@+id/searchBottomSheetFragment"
+        android:name="com.example.skyfinder.presentation.ui.fragment.SearchBottomSheetFragment"
+        android:label="SearchBottomSheetFragment" />
+    <fragment
+        android:id="@+id/stub5Fragment"
+        android:name="com.example.skyfinder.Stub5Fragment"
+        android:label="Stub5Fragment" />
 </navigation>

@@ -6,9 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
+import androidx.navigation.fragment.findNavController
+import com.example.skyfinder.R
 import com.example.skyfinder.databinding.SearchBottomSheetFragmentBinding
 import com.example.skyfinder.presentation.model.SearchRecommendationItem
+import com.example.skyfinder.presentation.ui.MainActivity
 import com.example.skyfinder.presentation.ui.adapter.SearchRecommendationAdapter
+import com.example.skyfinder.presentation.ui.fragment.stub.Stub1Fragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 private const val CITY_KEY = "CITY_KEY"
@@ -35,9 +39,6 @@ class SearchBottomSheetFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.difficultRouteButton.setOnClickListener {
-            Toast.makeText(context, "click", LENGTH_SHORT).show()
-        }
         val adapter = SearchRecommendationAdapter { item ->
             binding.searchToWhereEditText.setText(item.city)
         }
@@ -46,6 +47,7 @@ class SearchBottomSheetFragment : BottomSheetDialogFragment() {
         val fromCityName = requireArguments().getString(CITY_KEY)
         binding.searchFromEditText.setText(fromCityName)
         setupClearButton()
+        setupRouteButtons()
     }
 
     override fun onDestroyView() {
@@ -57,6 +59,22 @@ class SearchBottomSheetFragment : BottomSheetDialogFragment() {
         binding.clearImageButton.setOnClickListener {
             binding.searchToWhereEditText.text.clear()
         }
+    }
+
+    private fun setupRouteButtons() {
+        binding.apply {
+            difficultRouteButton.setOnClickListener { closeBottomSheetAndOpenStubFragment() }
+            weekendsButton.setOnClickListener { closeBottomSheetAndOpenStubFragment() }
+            hotTicketsButton.setOnClickListener { closeBottomSheetAndOpenStubFragment() }
+            anywhereButton.setOnClickListener {
+                binding.searchToWhereEditText.setText("Куда угодно")
+            }
+        }
+    }
+
+    private fun closeBottomSheetAndOpenStubFragment() {
+        this@SearchBottomSheetFragment.dismiss()
+        findNavController().navigate(R.id.action_main_fragment_to_stub5Fragment)
     }
 
     companion object {
