@@ -109,15 +109,14 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@id/card_view">
-
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chip_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginStart="22dp"
+            app:singleLine="true"
             app:layout_constraintEnd_toEndOf="parent" >
 
             <com.google.android.material.chip.Chip
@@ -126,19 +125,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/return_chip_text"
+                android:layout_marginStart="20dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:checkedIconTint="@color/white"
                 app:chipBackgroundColor="@color/grey_3"
                 app:chipIcon="@drawable/add_icon"
-                app:chipIconSize="14dp" />
+                 />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_when"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="24 фев, сб"
+                android:text="24 фев, сб"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:checkedIconTint="@color/white"
@@ -154,8 +154,8 @@
                 android:textStyle="bold"
                 app:checkedIconTint="@color/white"
                 app:chipBackgroundColor="@color/grey_3"
-                app:chipIcon="@drawable/profile_icon"
-                app:chipIconSize="14dp" />
+                app:chipIcon="@drawable/chip_profile_icon"
+                />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_filters"
@@ -165,15 +165,55 @@
                 android:text="@string/filters_chip_text"
                 android:textColor="@color/white"
                 android:textStyle="bold"
+                android:layout_marginEnd="20dp"
                 app:checkedIconTint="@color/white"
                 app:chipBackgroundColor="@color/grey_3"
                 app:chipIcon="@drawable/filters_icon"
-                app:chipIconSize="14dp" />
+                />
 
         </com.google.android.material.chip.ChipGroup>
 
     </HorizontalScrollView>
+    
+    <androidx.cardview.widget.CardView
+        android:layout_width="370dp"
+        android:layout_height="290dp"
+        app:cardBackgroundColor="@color/grey_1"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="64dp"
+        app:layout_constraintTop_toBottomOf="@id/card_view">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/direct_flights_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/direct_flights_text"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="18dp" />
+            
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="330dp"
+                android:layout_height="200dp"
+                app:layout_constraintStart_toStartOf="@id/direct_flights_text"
+                app:layout_constraintTop_toBottomOf="@id/direct_flights_text"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_marginTop="8dp"/>
 
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

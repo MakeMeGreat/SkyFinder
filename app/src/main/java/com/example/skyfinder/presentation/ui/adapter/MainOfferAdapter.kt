@@ -45,8 +45,8 @@ class MainOfferAdapter :
     }
 
     override fun onBindViewHolder(holder: MainOfferViewHolder, position: Int) {
-        val article = getItem(position)
-        holder.bind(article)
+        val offer = getItem(position)
+        holder.bind(offer)
     }
 
     companion object DiffCallback : DiffUtil.ItemCallback<OfferModel>() {
