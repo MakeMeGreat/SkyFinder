@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_main_fragment_to_stub5Fragment"
             app:destination="@id/stub5Fragment" />
+        <action
+            android:id="@+id/action_main_fragment_to_ticketsPreviewFragment"
+            app:destination="@id/ticketsPreviewFragment" />
     </fragment>
     <fragment
         android:id="@+id/stub_1_fragment"
@@ -41,4 +44,9 @@
         android:id="@+id/stub5Fragment"
         android:name="com.example.skyfinder.Stub5Fragment"
         android:label="Stub5Fragment" />
+    <fragment
+        android:id="@+id/ticketsPreviewFragment"
+        android:name="com.example.skyfinder.TicketsPreviewFragment"
+        android:label="fragment_tickets_preview"
+        tools:layout="@layout/fragment_tickets_preview" />
 </navigation>

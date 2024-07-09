@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".TicketsPreviewFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="370dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="56dp"
+        app:cardBackgroundColor="@color/grey_3"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/preview_divider"
+                android:layout_width="310dp"
+                android:layout_height="2dp"
+                android:layout_marginEnd="15dp"
+                app:dividerColor="@color/grey_4"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/back_arrow_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="4dp"
+                android:backgroundTint="@android:color/transparent"
+                android:src="@drawable/back_arrow_icon"
+                app:layout_constraintBottom_toBottomOf="@id/preview_divider"
+                app:layout_constraintEnd_toStartOf="@id/preview_divider"
+                app:layout_constraintTop_toTopOf="@id/preview_divider" />
+
+            <EditText
+                android:id="@+id/preview_from_edit_text"
+                android:layout_width="270dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="4dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="sans-serif-medium"
+                android:hint="@string/from_hint"
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey_6"
+                app:layout_constraintBottom_toTopOf="@id/preview_divider"
+                app:layout_constraintStart_toEndOf="@id/back_arrow_icon" />
+
+            <ImageButton
+                android:id="@+id/switch_image_button"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:backgroundTint="@android:color/transparent"
+                android:src="@drawable/switch_icon"
+                app:layout_constraintBottom_toBottomOf="@id/preview_from_edit_text"
+                app:layout_constraintEnd_toEndOf="@id/preview_divider"
+                app:layout_constraintStart_toEndOf="@id/preview_from_edit_text"
+                app:layout_constraintTop_toTopOf="@id/preview_from_edit_text"
+                app:tint="@color/white" />
+
+            <EditText
+                android:id="@+id/preview_to_where_edit_text"
+                android:layout_width="270dp"
+                android:layout_height="44dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="sans-serif-medium"
+                android:hint="@string/to_where_hint"
+                android:imeOptions="actionDone"
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey_6"
+                app:layout_constraintStart_toStartOf="@id/preview_from_edit_text"
+                app:layout_constraintTop_toBottomOf="@id/preview_divider" />
+
+            <ImageButton
+                android:id="@+id/clear_image_button"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:backgroundTint="@android:color/transparent"
+                android:src="@drawable/clear_icon"
+                app:layout_constraintBottom_toBottomOf="@id/preview_to_where_edit_text"
+                app:layout_constraintEnd_toEndOf="@id/preview_divider"
+                app:layout_constraintStart_toEndOf="@id/preview_to_where_edit_text"
+                app:layout_constraintTop_toTopOf="@id/preview_to_where_edit_text"
+                app:tint="@color/grey_6" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <HorizontalScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_view">
+
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="22dp"
+            app:layout_constraintEnd_toEndOf="parent" >
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_return"
+                style="@style/Widget.MaterialComponents.Chip.Action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/return_chip_text"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:checkedIconTint="@color/white"
+                app:chipBackgroundColor="@color/grey_3"
+                app:chipIcon="@drawable/add_icon"
+                app:chipIconSize="14dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_when"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="24 фев, сб"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:checkedIconTint="@color/white"
+                app:chipBackgroundColor="@color/grey_3" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_tickets_count"
+                style="@style/Widget.MaterialComponents.Chip.Action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tickets_count_text"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:checkedIconTint="@color/white"
+                app:chipBackgroundColor="@color/grey_3"
+                app:chipIcon="@drawable/profile_icon"
+                app:chipIconSize="14dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_filters"
+                style="@style/Widget.MaterialComponents.Chip.Action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/filters_chip_text"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:checkedIconTint="@color/white"
+                app:chipBackgroundColor="@color/grey_3"
+                app:chipIcon="@drawable/filters_icon"
+                app:chipIconSize="14dp" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.navigation.fragment.findNavController
 import com.example.skyfinder.R
 import com.example.skyfinder.databinding.SearchBottomSheetFragmentBinding
@@ -39,16 +40,18 @@ class SearchBottomSheetFragment : BottomSheetDialogFragment() {
         view.post {
             val parent = view.parent as View
             val behavior = BottomSheetBehavior.from(parent)
-            behavior.peekHeight = (parent.height).toInt()
+            behavior.peekHeight = (parent.height)
             behavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }
         val adapter = SearchRecommendationAdapter { item ->
             binding.searchToWhereEditText.setText(item.city)
+            navigateToTicketsPreviewFragment()
         }
         binding.searchRecommendationRecyclerView.adapter = adapter
         adapter.submitList(recommendationItemList)
         val fromCityName = requireArguments().getString(CITY_KEY)
         binding.searchFromEditText.setText(fromCityName)
+        setupEditTextActionButton()
         setupClearButton()
         setupRouteButtons()
     }
@@ -64,22 +67,41 @@ class SearchBottomSheetFragment : BottomSheetDialogFragment() {
         }
     }
 
+    private fun setupEditTextActionButton() {
+        binding.searchToWhereEditText.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH && isCitiesAreNotEmpty()) {
+                navigateToTicketsPreviewFragment()
+            }
+            true
+        }
+    }
+
+    private fun isCitiesAreNotEmpty(): Boolean {
+        return binding.searchFromEditText.text.isNotEmpty() &&
+                binding.searchToWhereEditText.text.isNotEmpty()
+    }
+
     private fun setupRouteButtons() {
         binding.apply {
-            difficultRouteButton.setOnClickListener { closeBottomSheetAndOpenStubFragment() }
-            weekendsButton.setOnClickListener { closeBottomSheetAndOpenStubFragment() }
-            hotTicketsButton.setOnClickListener { closeBottomSheetAndOpenStubFragment() }
+            difficultRouteButton.setOnClickListener { navigateToStubFragment() }
+            weekendsButton.setOnClickListener { navigateToStubFragment() }
+            hotTicketsButton.setOnClickListener { navigateToStubFragment() }
             anywhereButton.setOnClickListener {
                 binding.searchToWhereEditText.setText(R.string.anywhere_text)
+                navigateToTicketsPreviewFragment()
             }
         }
     }
 
-    private fun closeBottomSheetAndOpenStubFragment() {
+    private fun navigateToStubFragment() {
         this@SearchBottomSheetFragment.dismiss()
         findNavController().navigate(R.id.action_main_fragment_to_stub5Fragment)
     }
 
+    private fun navigateToTicketsPreviewFragment() {
+        this@SearchBottomSheetFragment.dismiss()
+        findNavController().navigate(R.id.action_main_fragment_to_ticketsPreviewFragment)
+    }
 
     companion object {
         fun newInstance(fromCityName: String): SearchBottomSheetFragment {
