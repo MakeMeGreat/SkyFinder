@@ -100,7 +100,11 @@ class SearchBottomSheetFragment : BottomSheetDialogFragment() {
 
     private fun navigateToTicketsPreviewFragment() {
         this@SearchBottomSheetFragment.dismiss()
-        findNavController().navigate(R.id.action_main_fragment_to_ticketsPreviewFragment)
+        val action = MainFragmentDirections.actionMainFragmentToTicketsPreviewFragment(
+            binding.searchFromEditText.text.toString(),
+            binding.searchToWhereEditText.text.toString()
+        )
+        findNavController().navigate(action)
     }
 
     companion object {

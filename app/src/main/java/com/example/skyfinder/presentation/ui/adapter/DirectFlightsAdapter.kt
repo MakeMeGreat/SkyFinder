@@ -1,7 +1,9 @@
 package com.example.skyfinder.presentation.ui.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -17,25 +19,26 @@ class DirectFlightsAdapter :
 
     class DirectFlightsViewHolder(val binding: DirectFlightsItemBinding) :
         ViewHolder(binding.root) {
-        fun bind(ticketOfferModel: TicketOfferModel) {
+        fun bind(ticketOfferModel: TicketOfferModel, context: Context, position: Int) {
             binding.apply {
-                imageView.setBackgroundColor(determineImageBackground(ticketOfferModel.id))
-                titleTextView.text = formatPrice(ticketOfferModel.price.value)
+                imageView.setBackgroundColor(determineImageBackground(position, context))
+                titleTextView.text = ticketOfferModel.title
                 timeTextView.text = formatTimeRange(ticketOfferModel.timeRange)
+                priceText.text = formatPrice(ticketOfferModel.price.value)
             }
         }
 
-        private fun determineImageBackground(id: Int): Int {
-            return when (id) {
-                1 -> R.color.red
-                2 -> R.color.blue
-                else -> R.color.white
+        private fun determineImageBackground(position: Int, context: Context): Int {
+            return when (position) {
+                0 -> ContextCompat.getColor(context, R.color.red)
+                1 -> ContextCompat.getColor(context, R.color.blue)
+                else -> ContextCompat.getColor(context, R.color.white)
             }
         }
 
         private fun formatPrice(price: Int): String {
             val formattedPrice = String.format(Locale.US, "%,d", price).replace(',', ' ')
-            return "от $formattedPrice ₽"
+            return "$formattedPrice ₽"
         }
 
         private fun formatTimeRange(times: List<String>): String {
@@ -52,7 +55,7 @@ class DirectFlightsAdapter :
 
     override fun onBindViewHolder(holder: DirectFlightsViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, holder.itemView.context, position)
     }
 
     companion object DirectFlightsDiffCallback : DiffUtil.ItemCallback<TicketOfferModel>() {

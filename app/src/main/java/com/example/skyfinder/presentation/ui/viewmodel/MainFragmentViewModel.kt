@@ -1,5 +1,6 @@
 package com.example.skyfinder.presentation.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -33,12 +34,17 @@ class MainFragmentViewModel @Inject constructor(
     private fun getOffers() {
         _isLoadingStateFlow.value = true
         viewModelScope.launch {
-            val offerResponse = getOffersUseCase()
-            mapper.mapOfferResponseDomainToPresentationModel(offerResponse)
-                .also {
-                    _offersStateFlow.value = it.offers
-                    _isLoadingStateFlow.value = false
-                }
+            try {
+                val offerResponse = getOffersUseCase()
+                mapper.mapOfferResponseDomainToPresentationModel(offerResponse)
+                    .also {
+                        _offersStateFlow.value = it.offers
+                        _isLoadingStateFlow.value = false
+                    }
+            } catch (e: Exception) {
+                _isLoadingStateFlow.value = false
+                Log.e("TAG", "${e.printStackTrace()}")
+            }
         }
     }
 

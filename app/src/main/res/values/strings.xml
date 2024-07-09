@@ -19,4 +19,6 @@
     <string name="tickets_count_text">1,эконом</string>
     <string name="filters_chip_text">фильтры</string>
     <string name="direct_flights_text">Прямые рейсы</string>
+    <string name="see_all_tickets_text">Посмотреть все билеты</string>
+    <string name="price_subscription_text">Подписка на цену</string>
 </resources>
