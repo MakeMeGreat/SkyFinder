@@ -134,6 +134,7 @@
             android:text="@string/has_transfer_text"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/flight_time_separator"
             app:layout_constraintTop_toTopOf="@+id/flight_time_separator"
             app:layout_constraintStart_toEndOf="@+id/flight_time_separator" />
 

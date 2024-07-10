@@ -9,15 +9,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.skyfinder.R
 import com.example.skyfinder.databinding.FragmentAllTicketsBinding
-import com.example.skyfinder.databinding.FragmentTicketsPreviewBinding
 import com.example.skyfinder.di.App
 import com.example.skyfinder.presentation.ui.adapter.AllTicketsAdapter
 import com.example.skyfinder.presentation.ui.adapter.AllTicketsDecorator
 import com.example.skyfinder.presentation.ui.viewmodel.AllTicketsViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -45,6 +43,7 @@ class AllTicketsFragment : Fragment() {
         viewModel = createViewModel()
         setupRecyclerView()
         showDataFromPreviousFragment()
+        setupBackButton()
     }
 
     override fun onDestroyView() {
@@ -52,17 +51,23 @@ class AllTicketsFragment : Fragment() {
         _binding = null
     }
 
+    private fun setupBackButton() {
+        binding.backArrowButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
+
     private fun showDataFromPreviousFragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.routeStateFlow .collect{
+                viewModel.routeStateFlow.collect {
                     binding.routeNameText.text = it
                 }
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.departureDetailsStateFlow .collect{
+                viewModel.departureDetailsStateFlow.collect {
                     binding.routeDetailsText.text = it
                 }
             }
@@ -77,7 +82,7 @@ class AllTicketsFragment : Fragment() {
         )
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.ticketsStateFlow.collect{
+                viewModel.ticketsStateFlow.collect {
                     adapter.submitList(it)
                 }
             }
@@ -89,8 +94,9 @@ class AllTicketsFragment : Fragment() {
     private fun setupRecyclerProgressBar() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.isLoadingStateFlow.collect{ isLoading ->
-                    binding.ticketsProgressBar.visibility = if (isLoading) View.VISIBLE else View.INVISIBLE
+                viewModel.isLoadingStateFlow.collect { isLoading ->
+                    binding.ticketsProgressBar.visibility =
+                        if (isLoading) View.VISIBLE else View.INVISIBLE
                 }
             }
         }
