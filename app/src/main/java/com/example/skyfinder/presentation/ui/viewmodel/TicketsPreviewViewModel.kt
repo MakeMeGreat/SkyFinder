@@ -20,6 +20,7 @@ class TicketsPreviewViewModel @Inject constructor(
     private val mapper: DomainToPresentationMapper,
 ) : ViewModel() {
 
+    //TODO make MutableStateFlow unmutable
     private val _fromCityNameStateFlow = MutableStateFlow(fromCityName)
     val fromCityNameStateFlow = _fromCityNameStateFlow
 

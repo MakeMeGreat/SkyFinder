@@ -69,7 +69,12 @@ class TicketsPreviewFragment : Fragment() {
 
     private fun setupSeeAllTicketsButton() {
         binding.seeAllTicketsButton.setOnClickListener {
-            findNavController().navigate(R.id.action_ticketsPreviewFragment_to_allTicketsFragment)
+            val action = TicketsPreviewFragmentDirections.actionTicketsPreviewFragmentToAllTicketsFragment(
+                fromCityName = viewModel.fromCityNameStateFlow.value,
+                toWhereCityName = viewModel.toWhereCityNameStateFlow.value,
+                departureDate = viewModel.departureDateStateFlow.value.time,
+            )
+            findNavController().navigate(action)
         }
     }
 

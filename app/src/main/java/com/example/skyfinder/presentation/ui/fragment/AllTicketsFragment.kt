@@ -9,6 +9,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.navArgs
 import com.example.skyfinder.R
 import com.example.skyfinder.databinding.FragmentAllTicketsBinding
 import com.example.skyfinder.databinding.FragmentTicketsPreviewBinding
@@ -43,11 +44,29 @@ class AllTicketsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = createViewModel()
         setupRecyclerView()
+        showDataFromPreviousFragment()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun showDataFromPreviousFragment() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.routeStateFlow .collect{
+                    binding.routeNameText.text = it
+                }
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.departureDetailsStateFlow .collect{
+                    binding.routeDetailsText.text = it
+                }
+            }
+        }
     }
 
     private fun setupRecyclerView() {
@@ -78,6 +97,13 @@ class AllTicketsFragment : Fragment() {
     }
 
     private fun createViewModel(): AllTicketsViewModel {
+        val args: AllTicketsFragmentArgs by navArgs()
+        val fromCityName = args.fromCityName
+        val toWhereCityName = args.toWhereCityName
+        val dateLong = args.departureDate
+        viewModelFactory.fromCityNameString = fromCityName
+        viewModelFactory.toWhereCityNameString = toWhereCityName
+        viewModelFactory.departureDateLong = dateLong
         return ViewModelProvider(this, viewModelFactory)[AllTicketsViewModel::class.java]
     }
 
