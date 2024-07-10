@@ -32,6 +32,8 @@ class AllTicketsAdapter :
                 arrivalAirportCodeText.text = model.arrival.airport
                 hasTransferText.visibility =
                     if (!model.hasTransfer) View.VISIBLE else View.INVISIBLE
+                flightTimeSeparator.visibility =
+                    if (!model.hasTransfer) View.VISIBLE else View.INVISIBLE
                 flightTime.text = getFlightTime(model.departure.date, model.arrival.date)
             }
         }

@@ -42,10 +42,19 @@ class AllTicketsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = createViewModel()
+        setupRecyclerView()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun setupRecyclerView() {
         val adapter = AllTicketsAdapter()
         binding.ticketsRecyclerView.adapter = adapter
         binding.ticketsRecyclerView.addItemDecoration(
-            AllTicketsDecorator(24)
+            AllTicketsDecorator(40)
         )
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -54,11 +63,18 @@ class AllTicketsFragment : Fragment() {
                 }
             }
         }
+
+        setupRecyclerProgressBar()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun setupRecyclerProgressBar() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.isLoadingStateFlow.collect{ isLoading ->
+                    binding.ticketsProgressBar.visibility = if (isLoading) View.VISIBLE else View.INVISIBLE
+                }
+            }
+        }
     }
 
     private fun createViewModel(): AllTicketsViewModel {
