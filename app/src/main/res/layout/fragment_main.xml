@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".presentation.ui.fragment.MainFragment">
+
+    <TextView
+        android:id="@+id/main_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="@string/main_title_text"
+        android:textColor="@color/grey_7"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.075" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/outer_cardView"
+        android:layout_width="370dp"
+        android:layout_height="150dp"
+        app:cardBackgroundColor="@color/grey_3"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_title_text"
+        app:layout_constraintVertical_bias="0.092" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/inner_cardview"
+        android:layout_width="330dp"
+        android:layout_height="110dp"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="@color/grey_4"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/outer_cardView"
+        app:layout_constraintEnd_toEndOf="@id/outer_cardView"
+        app:layout_constraintStart_toStartOf="@id/outer_cardView"
+        app:layout_constraintTop_toTopOf="@id/outer_cardView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/search_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/search_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/black" />
+
+            <EditText
+                android:id="@+id/from_edit_text"
+                android:layout_width="270dp"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="sans-serif-medium"
+                android:hint="@string/from_hint"
+                android:imeOptions="actionDone"
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey_6"
+                app:layout_constraintBottom_toTopOf="@id/main_edit_texts_divider"
+                app:layout_constraintStart_toStartOf="@id/main_edit_texts_divider" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/main_edit_texts_divider"
+                android:layout_width="270dp"
+                android:layout_height="2dp"
+                android:layout_marginStart="12dp"
+                app:dividerColor="@color/grey_5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/search_icon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/to_where_edit_text"
+                android:layout_width="270dp"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:focusableInTouchMode="false"
+                android:fontFamily="sans-serif-medium"
+                android:hint="@string/to_where_hint"
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey_6"
+                app:layout_constraintStart_toStartOf="@id/main_edit_texts_divider"
+                app:layout_constraintTop_toBottomOf="@id/main_edit_texts_divider" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/offer_feed_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/offer_feed_text"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@id/outer_cardView"
+        app:layout_constraintTop_toBottomOf="@id/outer_cardView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/offer_feed_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/offer_feed_text" />
+
+    <ProgressBar
+        android:id="@+id/offers_feed_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:indeterminateTint="@color/dark_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/offer_feed_recycler_view" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

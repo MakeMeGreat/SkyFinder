@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/main_fragment">
+    <fragment
+        android:id="@+id/main_fragment"
+        android:name="com.example.skyfinder.presentation.ui.fragment.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_main_fragment_to_stub5Fragment"
+            app:destination="@id/stub5Fragment" />
+        <action
+            android:id="@+id/action_main_fragment_to_ticketsPreviewFragment"
+            app:destination="@id/ticketsPreviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stub_1_fragment"
+        android:name="com.example.skyfinder.presentation.ui.fragment.stub.Stub1Fragment"
+        android:label="fragment_stub"
+        tools:layout="@layout/fragment_stub_1" />
+    <fragment
+        android:id="@+id/stub_2_fragment"
+        android:name="com.example.skyfinder.presentation.ui.fragment.stub.Stub2Fragment"
+        android:label="fragment_stub_2"
+        tools:layout="@layout/fragment_stub_2" />
+    <fragment
+        android:id="@+id/stub_3_fragment"
+        android:name="com.example.skyfinder.presentation.ui.fragment.stub.Stub3Fragment"
+        android:label="fragment_stub_3"
+        tools:layout="@layout/fragment_stub_3" />
+    <fragment
+        android:id="@+id/stub_4_fragment"
+        android:name="com.example.skyfinder.presentation.ui.fragment.stub.Stub4Fragment"
+        android:label="fragment_stub_4"
+        tools:layout="@layout/fragment_stub_4" />
+    <dialog
+        android:id="@+id/searchBottomSheetFragment"
+        android:name="com.example.skyfinder.presentation.ui.fragment.SearchBottomSheetFragment"
+        android:label="SearchBottomSheetFragment" />
+    <fragment
+        android:id="@+id/stub5Fragment"
+        android:name="com.example.skyfinder.presentation.ui.fragment.stub.Stub5Fragment"
+        android:label="Stub5Fragment" />
+    <fragment
+        android:id="@+id/ticketsPreviewFragment"
+        android:name="com.example.skyfinder.presentation.ui.fragment.TicketsPreviewFragment"
+        android:label="fragment_tickets_preview"
+        tools:layout="@layout/fragment_tickets_preview">
+        <argument
+            android:name="fromCityName"
+            app:argType="string" />
+        <argument
+            android:name="toWhereCityName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_ticketsPreviewFragment_to_allTicketsFragment"
+            app:destination="@id/allTicketsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allTicketsFragment"
+        android:name="com.example.skyfinder.presentation.ui.fragment.AllTicketsFragment"
+        android:label="fragment_all_tickets"
+        tools:layout="@layout/fragment_all_tickets">
+        <argument
+            android:name="fromCityName"
+            app:argType="string" />
+        <argument
+            android:name="toWhereCityName"
+            app:argType="string" />
+        <argument
+            android:name="departureDate"
+            app:argType="long" />
+    </fragment>
+</navigation>

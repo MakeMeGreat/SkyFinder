@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">SkyFinder</string>
+    <string name="air_tickets">Авиабилеты</string>
+    <string name="hotels">Отели</string>
+    <string name="in_short">Короче</string>
+    <string name="subscriptions">Подписки</string>
+    <string name="profile">Профиль</string>
+    <string name="stub_fragment_text">Экран заглушка</string>
+    <string name="main_title_text">Поиск дешевых\nавиабилетов</string>
+    <string name="from_hint">Откуда - Москва</string>
+    <string name="to_where_hint">Куда - Турция</string>
+    <string name="offer_feed_text">Музыкально отлететь</string>
+    <string name="difficult_route_text">Сложный\nмаршрут</string>
+    <string name="anywhere_text">Куда угодно</string>
+    <string name="weekends_text">Выходные</string>
+    <string name="hot_tickets_text">Горячие\nбилеты</string>
+    <string name="back_button_text">Назад</string>
+    <string name="return_chip_text">обратно</string>
+    <string name="tickets_count_text">1,эконом</string>
+    <string name="filters_chip_text">фильтры</string>
+    <string name="direct_flights_text">Прямые рейсы</string>
+    <string name="see_all_tickets_text">Посмотреть все билеты</string>
+    <string name="price_subscription_text">Подписка на цену</string>
+    <string name="has_transfer_text">Без пересадок</string>
+    <string name="filter_text">Фильтр</string>
+    <string name="price_graph">График цен</string>
 </resources>

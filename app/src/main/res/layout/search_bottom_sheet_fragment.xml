@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.Material3.BottomSheet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_2">
+
+    <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+        android:id="@+id/drag_handle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="360dp"
+        android:layout_height="110dp"
+        app:cardBackgroundColor="@color/grey_3"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/drag_handle">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/search_divider"
+                android:layout_width="330dp"
+                android:layout_height="2dp"
+                app:dividerColor="@color/grey_4"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/back_arrow_button"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/airplane_icon"
+                app:layout_constraintBottom_toBottomOf="@id/search_from_edit_text"
+                app:layout_constraintStart_toStartOf="@id/search_divider"
+                app:layout_constraintTop_toTopOf="@id/search_from_edit_text" />
+
+            <EditText
+                android:id="@+id/search_from_edit_text"
+                android:layout_width="270dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="4dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="sans-serif-medium"
+                android:hint="@string/from_hint"
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey_6"
+                app:layout_constraintBottom_toTopOf="@id/search_divider"
+                app:layout_constraintStart_toEndOf="@id/back_arrow_button" />
+
+            <ImageView
+                android:id="@+id/search_to_where_edit_text_icon"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/search_icon"
+                app:layout_constraintBottom_toBottomOf="@id/search_to_where_edit_text"
+                app:layout_constraintEnd_toEndOf="@id/back_arrow_button"
+                app:layout_constraintHorizontal_bias="0.25"
+                app:layout_constraintStart_toStartOf="@id/back_arrow_button"
+                app:layout_constraintTop_toTopOf="@id/search_to_where_edit_text"
+                app:layout_constraintVertical_bias="0.4" />
+
+            <EditText
+                android:id="@+id/search_to_where_edit_text"
+                android:layout_width="270dp"
+                android:layout_height="44dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="sans-serif-medium"
+                android:hint="@string/to_where_hint"
+                android:imeOptions="actionSearch"
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey_6"
+                app:layout_constraintStart_toStartOf="@id/search_from_edit_text"
+                app:layout_constraintTop_toBottomOf="@id/search_divider" />
+
+            <ImageButton
+                android:id="@+id/clear_image_button"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:backgroundTint="@android:color/transparent"
+                android:src="@drawable/clear_icon"
+                app:layout_constraintBottom_toBottomOf="@id/search_to_where_edit_text"
+                app:layout_constraintEnd_toEndOf="@id/search_divider"
+                app:layout_constraintStart_toEndOf="@id/search_to_where_edit_text"
+                app:layout_constraintTop_toTopOf="@id/search_to_where_edit_text"
+                app:tint="@color/grey_6" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageButton
+        android:id="@+id/difficult_route_button"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/dif_route_button_shape"
+        android:src="@drawable/difficult_route_icon"
+        app:layout_constraintStart_toStartOf="@id/card_view"
+        app:layout_constraintTop_toBottomOf="@id/card_view" />
+
+    <TextView
+        android:id="@+id/difficult_route_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/difficult_route_text"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/difficult_route_button"
+        app:layout_constraintStart_toStartOf="@id/difficult_route_button"
+        app:layout_constraintTop_toBottomOf="@id/difficult_route_button" />
+
+    <ImageButton
+        android:id="@+id/anywhere_button"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="37dp"
+        android:background="@drawable/anywhere_button_shape"
+        android:src="@drawable/anywhere_icon"
+        app:layout_constraintBottom_toBottomOf="@id/difficult_route_button"
+        app:layout_constraintStart_toEndOf="@id/difficult_route_button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/anywhere_text"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/anywhere_button"
+        app:layout_constraintStart_toStartOf="@id/anywhere_button"
+        app:layout_constraintTop_toTopOf="@id/difficult_route_text" />
+
+    <ImageButton
+        android:id="@+id/weekends_button"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="37dp"
+        android:background="@drawable/weekend_button_shape"
+        android:src="@drawable/weekends_icon"
+        app:layout_constraintBottom_toBottomOf="@id/difficult_route_button"
+        app:layout_constraintStart_toEndOf="@id/anywhere_button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/weekends_text"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/weekends_button"
+        app:layout_constraintStart_toStartOf="@id/weekends_button"
+        app:layout_constraintTop_toTopOf="@id/difficult_route_text" />
+
+    <ImageButton
+        android:id="@+id/hot_tickets_button"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/hot_tickets_button_shape"
+        android:src="@drawable/hot_tickets_icon"
+        app:layout_constraintBottom_toBottomOf="@id/difficult_route_button"
+        app:layout_constraintEnd_toEndOf="@id/card_view" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/hot_tickets_text"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/hot_tickets_button"
+        app:layout_constraintStart_toStartOf="@id/hot_tickets_button"
+        app:layout_constraintTop_toTopOf="@id/difficult_route_text" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/recycler_card"
+        android:layout_width="360dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="270dp"
+        app:cardBackgroundColor="@color/grey_3"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/card_view">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_recommendation_recycler_view"
+            android:layout_width="324dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginVertical="14dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="5dp"
+        android:layout_height="300dp"
+        app:dividerColor="@color/grey_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recycler_card" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
