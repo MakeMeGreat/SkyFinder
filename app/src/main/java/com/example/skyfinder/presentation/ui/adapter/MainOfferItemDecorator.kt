@@ -14,7 +14,6 @@ class MainOfferItemDecorator(
         parent: RecyclerView,
         state: RecyclerView.State
     ) {
-//        super.getItemOffsets(outRect, view, parent, state)
         if (parent.getChildAdapterPosition(view) == 0) {
             outRect.left = spaceSide
         } else {

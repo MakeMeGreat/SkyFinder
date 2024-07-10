@@ -63,7 +63,7 @@
         android:id="@+id/allTicketsFragment"
         android:name="com.example.skyfinder.presentation.ui.fragment.AllTicketsFragment"
         android:label="fragment_all_tickets"
-        tools:layout="@layout/fragment_all_tickets" >
+        tools:layout="@layout/fragment_all_tickets">
         <argument
             android:name="fromCityName"
             app:argType="string" />

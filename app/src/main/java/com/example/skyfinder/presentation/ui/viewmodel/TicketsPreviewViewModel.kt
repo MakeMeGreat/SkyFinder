@@ -20,24 +20,23 @@ class TicketsPreviewViewModel @Inject constructor(
     private val mapper: DomainToPresentationMapper,
 ) : ViewModel() {
 
-    //TODO make MutableStateFlow unmutable
     private val _fromCityNameStateFlow = MutableStateFlow(fromCityName)
-    val fromCityNameStateFlow = _fromCityNameStateFlow
+    val fromCityNameStateFlow: StateFlow<String> = _fromCityNameStateFlow
 
     private val _toWhereCityNameStateFlow = MutableStateFlow(toWhereCityName)
-    val toWhereCityNameStateFlow = _toWhereCityNameStateFlow
+    val toWhereCityNameStateFlow: StateFlow<String> = _toWhereCityNameStateFlow
 
     private val _ticketOffersStateFlow = MutableStateFlow(emptyList<TicketOfferModel>())
-    val ticketOffersStateFlow = _ticketOffersStateFlow
+    val ticketOffersStateFlow: StateFlow<List<TicketOfferModel>> = _ticketOffersStateFlow
 
     private var _isLoadingStateFlow = MutableStateFlow(false)
     val isLoadingStateFlow: StateFlow<Boolean> = _isLoadingStateFlow
 
     private val _departureDateStateFlow = MutableStateFlow(Date())
-    val departureDateStateFlow = _departureDateStateFlow
+    val departureDateStateFlow: StateFlow<Date> = _departureDateStateFlow
 
     private val _returnDateStateFlow = MutableStateFlow(Date(0))
-    val returnDateStateFlow = _returnDateStateFlow
+    val returnDateStateFlow: StateFlow<Date> = _returnDateStateFlow
 
     init {
         getTicketOffers()

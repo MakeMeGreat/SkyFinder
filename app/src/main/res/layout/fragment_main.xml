@@ -141,5 +141,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/offer_feed_recycler_view" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

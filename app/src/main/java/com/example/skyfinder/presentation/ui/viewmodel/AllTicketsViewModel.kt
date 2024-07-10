@@ -33,7 +33,8 @@ class AllTicketsViewModel @Inject constructor(
     private val _routeStateFlow = MutableStateFlow("$fromCityName-$toWhereCityName")
     val routeStateFlow: StateFlow<String> = _routeStateFlow
 
-    private val _departureDetailsStateFlow = MutableStateFlow(getDepartureDetails(departureDateLong))
+    private val _departureDetailsStateFlow =
+        MutableStateFlow(getDepartureDetails(departureDateLong))
     val departureDetailsStateFlow: StateFlow<String> = _departureDetailsStateFlow
 
     init {

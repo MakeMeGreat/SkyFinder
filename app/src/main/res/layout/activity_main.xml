@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".presentation.ui.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
@@ -36,6 +35,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fragmentContainerView"
         app:menu="@menu/bottom_nav" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

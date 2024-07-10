@@ -28,7 +28,6 @@ class Stub5Fragment : Fragment() {
         }
     }
 
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

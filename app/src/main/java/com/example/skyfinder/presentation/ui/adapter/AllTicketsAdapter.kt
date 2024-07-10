@@ -66,7 +66,10 @@ class AllTicketsAdapter :
             try {
                 val diffInMillis = date2!!.time - date1!!.time
                 val diffInHours = TimeUnit.MILLISECONDS.toHours(diffInMillis)
-                val diffInMinutes = TimeUnit.MILLISECONDS.toMinutes(diffInMillis) - TimeUnit.HOURS.toMinutes(diffInHours)
+                val diffInMinutes =
+                    TimeUnit.MILLISECONDS.toMinutes(diffInMillis) - TimeUnit.HOURS.toMinutes(
+                        diffInHours
+                    )
 
                 return "$diffInHours:$diffInMinutes ч в пути"
             } catch (e: ParseException) {

@@ -26,8 +26,8 @@ import java.util.Date
 import java.util.Locale
 import javax.inject.Inject
 
-private const val FROM_CITY_NAME = "FROM_CITY_NAME"
-private const val TO_WHERE_CITY_NAME = "TO_WHERE_CITY_NAME"
+//private const val FROM_CITY_NAME = "FROM_CITY_NAME"
+//private const val TO_WHERE_CITY_NAME = "TO_WHERE_CITY_NAME"
 
 class TicketsPreviewFragment : Fragment() {
 
@@ -69,11 +69,12 @@ class TicketsPreviewFragment : Fragment() {
 
     private fun setupSeeAllTicketsButton() {
         binding.seeAllTicketsButton.setOnClickListener {
-            val action = TicketsPreviewFragmentDirections.actionTicketsPreviewFragmentToAllTicketsFragment(
-                fromCityName = viewModel.fromCityNameStateFlow.value,
-                toWhereCityName = viewModel.toWhereCityNameStateFlow.value,
-                departureDate = viewModel.departureDateStateFlow.value.time,
-            )
+            val action =
+                TicketsPreviewFragmentDirections.actionTicketsPreviewFragmentToAllTicketsFragment(
+                    fromCityName = viewModel.fromCityNameStateFlow.value,
+                    toWhereCityName = viewModel.toWhereCityNameStateFlow.value,
+                    departureDate = viewModel.departureDateStateFlow.value.time,
+                )
             findNavController().navigate(action)
         }
     }
@@ -132,7 +133,6 @@ class TicketsPreviewFragment : Fragment() {
                 val selectedDate = Calendar.getInstance()
                 selectedDate.set(selectedYear, selectedMonth, selectedDay)
                 onDateSelected(selectedDate.time)
-//                viewModel.updateDepartureDate(selectedDate.time)
             }, year, month, day
         )
         datePickerDialog.show()
@@ -229,14 +229,4 @@ class TicketsPreviewFragment : Fragment() {
         viewModelFactory.toWhereCityNameString = toWhereCityName
         return ViewModelProvider(this, viewModelFactory)[TicketsPreviewViewModel::class.java]
     }
-
-//    companion object {
-//        fun newInstance(fromCityName: String, toWhereCityName: String) =
-//            TicketsPreviewFragment().apply {
-//                arguments = Bundle().apply {
-//                    putString(FROM_CITY_NAME, fromCityName)
-//                    putString(TO_WHERE_CITY_NAME, toWhereCityName)
-//                }
-//            }
-//    }
 }

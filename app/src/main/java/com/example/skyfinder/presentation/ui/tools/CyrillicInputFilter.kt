@@ -1,4 +1,4 @@
-package com.example.skyfinder.presentation.ui
+package com.example.skyfinder.presentation.ui.tools
 
 import android.text.InputFilter
 import android.text.Spanned

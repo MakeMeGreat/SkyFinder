@@ -14,7 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.skyfinder.databinding.FragmentMainBinding
 import com.example.skyfinder.di.App
-import com.example.skyfinder.presentation.ui.CyrillicInputFilter
+import com.example.skyfinder.presentation.ui.tools.CyrillicInputFilter
 import com.example.skyfinder.presentation.ui.MainActivity
 import com.example.skyfinder.presentation.ui.adapter.MainOfferAdapter
 import com.example.skyfinder.presentation.ui.adapter.MainOfferItemDecorator
@@ -72,15 +72,6 @@ class MainFragment : Fragment() {
         }
 
         setupEditTexts()
-//        val fm = (activity as MainActivity).supportFragmentManager
-////        binding.toWhereEditText.setOnFocusChangeListener { _, hasFocus ->
-////            if (hasFocus)
-////            SearchBottomSheetFragment().show(fm, "my bottom sheet dialog")
-////        }
-//        binding.toWhereEditText.setOnClickListener {
-//            binding.fromEditText.clearFocus()
-//            SearchBottomSheetFragment().show(fm, "my bottom sheet dialog")
-//        }
     }
 
     private fun setupEditTexts() {
@@ -94,8 +85,6 @@ class MainFragment : Fragment() {
                     delay(2000)
                     editable?.let {
                         viewModel.saveTextToSharedPrefs(editable.toString())
-//                        if (editable.toString().isNotEmpty()) {
-//                        }
                     }
                 }
             }
