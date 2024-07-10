@@ -110,7 +110,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="15sp"
-            tools:text="4ч в пути"
+            tools:text="4:30 ч в пути"
             app:layout_constraintTop_toTopOf="@+id/departure_time_text"
             app:layout_constraintStart_toEndOf="@+id/arrival_time_text"
             android:layout_marginStart="16sp" />
@@ -127,12 +127,13 @@
 
         <TextView
             android:id="@+id/has_transfer_text"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="15sp"
             android:text="@string/has_transfer_text"
             android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/flight_time_separator"
             app:layout_constraintStart_toEndOf="@+id/flight_time_separator" />
 

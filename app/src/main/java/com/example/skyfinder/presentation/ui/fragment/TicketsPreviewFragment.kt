@@ -59,11 +59,18 @@ class TicketsPreviewFragment : Fragment() {
         makeDepartureChipDatePickable()
         makeReturnChipToObserveVMFlow()
         makeReturnChipDatePickable()
+        setupSeeAllTicketsButton()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setupSeeAllTicketsButton() {
+        binding.seeAllTicketsButton.setOnClickListener {
+            findNavController().navigate(R.id.action_ticketsPreviewFragment_to_allTicketsFragment)
+        }
     }
 
     private fun makeReturnChipDatePickable() {

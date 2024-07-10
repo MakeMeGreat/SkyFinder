@@ -55,5 +55,13 @@
         <argument
             android:name="toWhereCityName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_ticketsPreviewFragment_to_allTicketsFragment"
+            app:destination="@id/allTicketsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/allTicketsFragment"
+        android:name="com.example.skyfinder.presentation.ui.fragment.AllTicketsFragment"
+        android:label="fragment_all_tickets"
+        tools:layout="@layout/fragment_all_tickets" />
 </navigation>
