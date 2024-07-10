@@ -21,8 +21,6 @@
     <string name="direct_flights_text">Прямые рейсы</string>
     <string name="see_all_tickets_text">Посмотреть все билеты</string>
     <string name="price_subscription_text">Подписка на цену</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="has_transfer_text">Без пересадок</string>
     <string name="filter_text">Фильтр</string>
     <string name="price_graph">График цен</string>

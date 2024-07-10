@@ -35,6 +35,10 @@ class AllTicketsAdapter :
                 flightTimeSeparator.visibility =
                     if (!model.hasTransfer) View.VISIBLE else View.INVISIBLE
                 flightTime.text = getFlightTime(model.departure.date, model.arrival.date)
+                if (model.badge != null) {
+                    badgeText.text = model.badge
+                    badgeText.visibility = View.VISIBLE
+                }
             }
         }
 
